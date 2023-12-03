@@ -1,0 +1,12 @@
+.txtArea::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+.txtArea::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0,0.7); /* Color of the scrollbar thumb */
+  border-radius: 6px; /* Rounded corners of the thumb */
+}
+.txtArea::-webkit-scrollbar-track {
+  background: transparent; /* Color of the scrollbar track */
+  height: 100px;
+}

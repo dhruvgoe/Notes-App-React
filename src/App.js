@@ -1,23 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import { useEffect, useState } from "react";
+import "./App.css";
+import Header from "./components/Header";
+import NoteContainer from "./components/NoteContainer";
+import Adder from "./components/Adder";
 
 function App() {
+  function setToStorage() {
+    localStorage.clear();
+    localStorage.setItem("notes", JSON.stringify(notes));
+  }
+
+  function getFromStorage() {
+    let notesArray = localStorage.getItem("notes");
+    notesArray = JSON.parse(notesArray);
+    if (notesArray) {
+      return notesArray;
+    } else {
+      return [];
+    }
+  }
+
+  const [notes, setNotes] = useState([]);
+
+  useEffect(() => {
+    setNotes(getFromStorage());
+  }, []);
+
+  useEffect(() => {
+    setToStorage(notes);
+  }, [notes]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="w-full h-screen overflow-x-hidden">
+      <div className="w-full shadow-lg flex sticky top-0">
+        <Header setNotes={setNotes} notes={notes} />
+      </div>
+      <div className="">
+        <NoteContainer notes={notes} setNotes={setNotes} />
+      </div>
     </div>
   );
 }
