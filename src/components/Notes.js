@@ -85,7 +85,8 @@ const Notes = (props) => {
   return (
     <div
       className="backG w-full rounded-lg
-    flex flex-col p-6 aspect-square justify-between"
+    flex flex-col p-6 aspect-square justify-between
+    hover:scale-105 transition-all duration-200 "
       style={{ backgroundColor: colorGenerator() }}
     >
       <button onClick={clickHandler} className="w-full flex justify-end">
