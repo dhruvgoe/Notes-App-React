@@ -77,17 +77,16 @@ const Notes = (props) => {
 
   const colors = ["#fec970", "#fe9b71", "#b592fc", "#00d4fe", "#e3ee8e"];
 
-  function colorGenerator() {
-    const index = Math.floor(Math.random() * colors.length);
+  function colorGenerator(index) {
+    index = index % colors.length;
     return colors[index];
   }
 
   return (
     <div
       className="backG w-full rounded-lg
-    flex flex-col p-6 aspect-square justify-between
-    hover:scale-105 transition-all duration-200 "
-      style={{ backgroundColor: colorGenerator() }}
+    flex flex-col p-6 aspect-square justify-between transition-all duration-200 "
+      style={{ backgroundColor: colorGenerator(props.index) }}
     >
       <button onClick={clickHandler} className="w-full flex justify-end">
         {props.note.isEditable ? (
